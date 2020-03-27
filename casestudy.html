@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Case Study</title>
+</head>
+<body>
+<canvas id="myCanvas" width="1200px" height="400px" style="border:1px solid #000000"></canvas>
+<script language="JavaScript">
+    let x = 0;
+    let y = 300;
+
+    function loadImage() {
+        let a = document.getElementById('myCanvas');
+        let ctx = a.getContext('2d');
+        let img = new Image();
+        img.src = './img/tho-1.jpg';
+        ctx.drawImage(img, x, y, img.width / 6, img.height / 6);
+
+    }
+    loadImage()
+</script>
+</body>
+</html>
