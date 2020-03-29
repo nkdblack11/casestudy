@@ -5,20 +5,405 @@
     <title>Case Study</title>
 </head>
 <body>
+<div id="poit" style="font-size: 18px"></div>
 <canvas id="myCanvas" width="1200px" height="400px" style="border:1px solid #000000"></canvas>
-<script language="JavaScript">
-    let x = 0;
-    let y = 300;
 
-    function loadImage() {
-        let a = document.getElementById('myCanvas');
-        let ctx = a.getContext('2d');
-        let img = new Image();
-        img.src = './img/tho-1.jpg';
-        ctx.drawImage(img, x, y, img.width / 6, img.height / 6);
+<script language="JavaScript">
+    let objMonkey = function () {
+        this.width = 70;
+        this.height = 72;
+        this.x = 20;
+        this.y = 311;
+        this.src = './img/khi01.jpg';
+        this.status = 'run';
+
+        this.setStatus = function (number) {
+            switch (number) {
+                case 0:
+                    this.status = 'run';
+                    break;
+                case 1:
+                    this.status = 'up';
+                    this.y = 305;
+                    break;
+                case 2:
+                    this.status = 'down';
+                    break;
+                default:
+                    this.status = 'run';
+                    break;
+            }
+        };
+
+        this.setTop = function (number) {
+            this.y = this.y + number;
+        }
+
+        this.setStyle = function (style) {
+            switch (style) {
+                case 0:
+                    this.src = './img/khi01.jpg';
+                    this.width = 70;
+                    this.height = 72;
+                    this.y = 311;
+                    break;
+                case 10:
+                    this.src = './img/khi02.jpg';
+                    this.width = 70;
+                    this.height = 84;
+                    this.y = 299;
+                    break;
+                case 20:
+                    this.src = './img/khi03.jpg';
+                    this.width = 70;
+                    this.height = 98;
+                    this.y = 284;
+                    break;
+                case 30:
+                    this.src = './img/khi04.jpg';
+                    this.width = 70;
+                    this.height = 104;
+                    this.y = 278;
+                    break;
+                case 40:
+                    this.src = './img/khi05.jpg';
+                    this.width = 70;
+                    this.height = 78;
+                    this.y = 305;
+                    break;
+                case 50:
+                    this.src = './img/khi1.jpg';
+                    this.width = 70;
+                    this.height = 72;
+                    this.y = 311;
+                    break;
+                case 60:
+                    this.src = './img/khi2.jpg';
+                    this.width = 70;
+                    this.height = 84;
+                    this.y = 299;
+                    break;
+                case 70:
+                    this.src = './img/khi3.jpg';
+                    this.width = 70;
+                    this.height = 98;
+                    this.y = 284;
+                    break;
+                case 80:
+                    this.src = './img/khi4.jpg';
+                    this.width = 70;
+                    this.height = 104;
+                    this.y = 278;
+                    break;
+                case 90:
+                    this.src = './img/khi5.jpg';
+                    this.width = 70;
+                    this.height = 78;
+                    this.y = 305;
+                    break;
+                case 100:
+                    this.src = './img/khi-run1.jpg';
+                    this.width = 70;
+                    this.height = 78;
+                    this.y = 305;
+                    break;
+                case 110:
+                    this.src = './img/khi-run2.jpg';
+                    this.width = 70;
+                    this.height = 78;
+                    break;
+                case 120:
+                    this.src = './img/khi-run3.jpg';
+                    this.width = 70;
+                    this.height = 78;
+                    this.y = 305;
+                    break;
+                case 130:
+                    this.src = './img/khi-run4.jpg';
+                    this.width = 70;
+                    this.height = 78;
+                    break;
+                case 140:
+                    this.src = './img/khi-run5.jpg';
+                    this.width = 70;
+                    this.height = 78;
+                    this.y = 305;
+                    break;
+            }
+        }
+    }
+    let Barriers = function () {
+        this.width = 79;
+        this.height = 100;
+        this.x = 1200;
+        this.y = 285;
+        this.src = './img/suong-rong1.jpg'
+
+        this.setStyle1 = function (style) {
+            switch (style) {
+                case 0:
+                    this.src = './img/suong-rong1.jpg';
+                    this.width = 79;
+                    this.height = 100;
+                    this.y = 285;
+                    break;
+                case 1:
+                    this.src = './img/suong-rong2.png';
+                    this.width = 115;
+                    this.height = 87;
+                    this.y = 305;
+                    break;
+                case 2:
+                    this.src = './img/suong-rong3.png';
+                    this.width = 111;
+                    this.height = 109;
+                    this.y = 275;
+                    break;
+                case 3:
+                    this.src = './img/suong-rong4.jpg';
+                    this.width = 95;
+                    this.height = 130;
+                    this.y = 267;
+                    break;
+            }
+        }
+    };
+
+    let Decorate = function () {
+        this.width = 283;
+        this.height = 81;
+        this.x = 1400;
+        this.y = 85;
+        this.src = './img/may1.png'
+
+        this.setStyle2 = function (style) {
+            switch (style) {
+                case 0:
+                    this.src = './img/may1.png';
+                    this.width = 283;
+                    this.height = 81;
+                    this.y = 65;
+                    break;
+                case 1:
+                    this.src = './img/may2.png';
+                    this.width = 189;
+                    this.height = 101;
+                    this.y = 85;
+                    break;
+                case 2:
+                    this.src = './img/may3.png';
+                    this.width = 211;
+                    this.height = 111;
+                    this.y = 75;
+                    break;
+                case 3:
+                    this.src = './img/may4.png';
+                    this.width = 243;
+                    this.height = 106;
+                    this.y = 55;
+                    break;
+            }
+        }
+    };
+
+    let barriers = new Barriers();
+    let barriersImg = new Image();
+    let arr = [];
+    arr.push({...barriers});
+
+    let decorate = new Decorate();
+    let decorateImg = new Image();
+    let arr1 = [];
+    arr1.push({...decorate});
+
+    let monkey = new objMonkey();
+    let monkeyImg = new Image();
+    let monkeyStyle = 0;
+    let monkeyTop = 3
+
+    let y = 380;
+    let canvas = document.getElementById('myCanvas');
+    let ctx = canvas.getContext('2d');
+
+    let timer = '';
+
+    function Start(y) {
+        monkey = new objMonkey();
+        barriers = new Barriers();
+        arr = [];
+        arr.push({...barriers});
+        const rect = {x: 560, y: y, width: 120, heigth: 80}
+        let click = (evt) => {
+            if (evt.layerX > rect.x && evt.layerX < rect.x + rect.width && evt.layerY < rect.y + rect.heigth && evt.layerY > rect.y) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+                point = 0
+                x = 500;
+                monkeyTop = 3
+                loop = 0
+                loadImg()
+                canvas.removeEventListener("click", click)
+            }
+        };
+
+        canvas.addEventListener('click', click)
+        ctx.beginPath();
+        ctx.rect(rect.x, rect.y, rect.width, rect.heigth);
+        ctx.fillStyle = 'rgba(225,225,225,0.5)';
+        ctx.fill();
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = '#000000';
+        ctx.stroke();
+        ctx.closePath();
+        ctx.font = '40pt Kremlin Pro Web';
+        ctx.fillStyle = '#000000';
+        ctx.fillText('Start', 570, y + 55);
+    }
+
+
+    let duong = new Image();
+    duong.src = './img/duong.jpg';
+    let loop = 0
+
+    let x = 500
+    let point = 0
+
+    function loadImg() {
+        let speed = x
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+        for (let j = 0; j < 70; j++) {
+            ctx.drawImage(duong, (j * 70) - loop * 3, y, duong.width / 6, duong.height / 6);
+        }
+
+        let length1 = arr1.length;
+        for (let i = 0; i < length1; i++) {
+            decorateImg.src = arr1[i].src;
+            arr1[i].x = arr1[i].x - (speed / 200)
+            ctx.drawImage(decorateImg, arr1[i].x, arr1[i].y, arr1[i].width, arr1[i].height);
+        }
+        if (1200 - (arr1[length1 - 1].x - (speed / 200)) > 1200) {
+            let select = Math.floor(Math.random() * 100)
+            if (select % 40 === 0) {
+                let decorateStyle = Math.floor(Math.random() * 4)
+                decorate.setStyle2(decorateStyle)
+                arr1.push({...decorate})
+            }
+        }
+        if (1200 - (arr1[length1 - 1].x - (speed / 200)) > 2000) {
+            let decorateStyle = Math.floor(Math.random() * 4)
+            barriers.setStyle1(decorateStyle)
+            arr1.push({...decorate})
+        }
+        for (let i = 0; i < length1; i++) {
+            if (arr1[i].x < -800) {
+                arr1.splice(i, 1)
+                length1 = length1 - 1
+            }
+        }
+
+        // decorate.setStyle2(3)
+        // decorateImg.src = decorate.src
+        // console.log(decorateImg.width/4, decorateImg.height/4)
+        // ctx.drawImage(decorateImg,100, 100, decorateImg.width/4, decorateImg.height/4);
+
+        if (monkey.status === "run") {
+            monkey.setStyle(monkeyStyle)
+            monkeyStyle++
+        }
+        if (monkey.status === 'up') {
+            monkey.setStyle(110)
+            monkey.setTop(-monkeyTop)
+            if (monkey.y < 50) {
+                monkey.setStatus(2)
+            }
+        }
+        if (monkey.status === 'down') {
+            monkey.setStyle(130)
+            monkey.setTop(monkeyTop)
+            if (monkey.y >= 311) {
+                monkeyStyle = 0
+                monkey.setStyle(monkeyStyle)
+                monkey.setStatus(0)
+            }
+
+        }
+        monkeyImg.src = monkey.src;
+        ctx.drawImage(monkeyImg, monkey.x, monkey.y, monkey.width, monkey.height);
+        if (monkeyStyle > 100) {
+            monkeyStyle = 0
+        }
+
+        let length = arr.length
+        for (let i = 0; i < length; i++) {  // giảm x của cây có trong mảng
+            barriersImg.src = arr[i].src;
+            arr[i].x = arr[i].x - (speed / 200)
+            ctx.drawImage(barriersImg, arr[i].x, arr[i].y, arr[i].width, arr[i].height);
+        }
+        if (1200 - (arr[length - 1].x - (speed / 200)) > 700) {   // thêm cây mới vào mảng
+            let select = Math.floor(Math.random() * 100)
+            if (select % 40 === 0) {
+                let barriersStyle = Math.floor(Math.random() * 4)
+                barriers.setStyle1(barriersStyle)
+                arr.push({...barriers})
+            }
+        }
+        if (1200 - (arr[length - 1].x - (speed / 200)) > 1200) {
+            let barriersStyle = Math.floor(Math.random() * 4)
+            barriers.setStyle1(barriersStyle)
+            arr.push({...barriers})
+        }
+        for (let i = 0; i < length; i++) {
+            if (arr[i].x < -100) {
+                arr.splice(i, 1)
+                length = length - 1
+                point++
+            }
+        }
+
+        let gradient = ctx.createLinearGradient(0, 0, 50, 0);
+        gradient.addColorStop("0", "magenta");
+        gradient.addColorStop("0.5", "blue");
+        gradient.addColorStop("1.0", "red");
+        ctx.fillStyle = gradient;
+        ctx.fillText("Point: " + point, 50, 60);
+        x = x + 0.1
+        monkeyTop = monkeyTop + 0.0005
+        loop = loop + 2.0005
+        if (loop >= 100) loop = 0
+        timer = setTimeout(loadImg, 6)
+        console.log('toa do con khi: ', monkey.x, monkey.y, monkey.width, monkey.height)
+        console.log('toa do vat the: ')
+        for (let i = 0; i < length; i++) {  // giảm x của cây có trong mảng
+            console.log(arr[i].x, arr[i].y, arr[i].width, arr[i].height)
+            if (arr[i].x <= (monkey.x + monkey.width) && arr[i].x >= monkey.x && arr[i].y <= (monkey.y + monkey.height) && arr[i].y >= monkey.y) {
+                clearTimeout(timer)
+                Start(50);
+                ctx.fillText("Game Over", 500, 220);
+                break;
+            }
+            if (arr[i].x + arr[i].width <= monkey.x + monkey.width && arr[i].x + monkey.width >= monkey.x && arr[i].y <= (monkey.y + monkey.height) && arr[i].y >= monkey.y) {
+                clearTimeout(timer)
+                Start(50);
+                ctx.fillText("Game Over", 500, 220);
+                break;
+            }
+
+        }
 
     }
-    loadImage()
+    Start(160);
+
+    // loadImg()
+    document.addEventListener('keyup', function (event) {
+        if (event.keyCode === 32 && monkey.status !== 'down ') {
+            monkey.setStatus(2)
+        }
+    })
+    document.addEventListener('keydown', function (event) {
+        if (event.keyCode === 32 && monkey.status === 'run') {
+            monkey.setStatus(1)
+        }
+    })
 </script>
 </body>
 </html>
