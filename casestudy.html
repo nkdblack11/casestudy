@@ -7,7 +7,7 @@
 <body>
 <div id="poit" style="font-size: 18px"></div>
 <canvas id="myCanvas" width="1200px" height="400px" style="border:1px solid #000000"></canvas>
-
+<h3 style="color: orangered">Giữ space để nhẩy</h3>
 <script language="JavaScript">
     let objMonkey = function () {
         this.width = 70;
@@ -371,10 +371,7 @@
         loop = loop + 2.0005
         if (loop >= 100) loop = 0
         timer = setTimeout(loadImg, 6)
-        console.log('toa do con khi: ', monkey.x, monkey.y, monkey.width, monkey.height)
-        console.log('toa do vat the: ')
-        for (let i = 0; i < length; i++) {  // giảm x của cây có trong mảng
-            console.log(arr[i].x, arr[i].y, arr[i].width, arr[i].height)
+        for (let i = 0; i < length; i++) {
             if (arr[i].x <= (monkey.x + monkey.width) && arr[i].x >= monkey.x && arr[i].y <= (monkey.y + monkey.height) && arr[i].y >= monkey.y) {
                 clearTimeout(timer)
                 Start(50);
@@ -387,7 +384,12 @@
                 ctx.fillText("Game Over", 500, 220);
                 break;
             }
-
+            if (arr[i].x <= (monkey.x + monkey.width) && arr[i].x >= monkey.x && arr[i].y + (arr[i].height/2) >= monkey.y && arr[i].y + (arr[i].height/2) <= monkey.y + monkey.height){
+                clearTimeout(timer)
+                Start(50);
+                ctx.fillText("Game Over", 500, 220);
+                break;
+            }
         }
 
     }
